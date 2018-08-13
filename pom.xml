@@ -139,6 +139,11 @@
       <version>1.2.31</version>
     </dependency>
     <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>2.3.22</version>
+    </dependency>
+    <dependency>
       <groupId>com.oracle</groupId>
       <artifactId>ojdbc6</artifactId>
       <version>11.2.0.3</version>
@@ -162,6 +167,20 @@
 
   <build>
     <finalName>ssm</finalName>
+    <resources>
+      <!--表示把java目录下的有关xml文件,properties文件编译/打包的时候放在resource目录下-->
+      <resource>
+        <directory>${basedir}/src/main/java</directory>
+        <includes>
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>${basedir}/src/main/resources</directory>
+      </resource>
+    </resources>
+
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>

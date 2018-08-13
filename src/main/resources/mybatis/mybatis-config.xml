@@ -5,9 +5,10 @@
 <configuration>
 
     <!-- 全局配置setting,根据需要进行配置 -->
-    <!--<settings>
-        <setting name="" value=""/>
-    </settings>-->
+    <settings>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
 
     <!-- 设置别名 -->
     <typeAliases>

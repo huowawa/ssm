@@ -58,7 +58,7 @@
 	<!-- 配置mapper接口扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- 要扫描的包的名称，有多个包时，包名之间用半角逗号隔开 -->
-		<property name="basePackage" value="com.soft.platform.system.mapper"></property>
+		<property name="basePackage" value="com.soft.platform.*.mapper"></property>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
 

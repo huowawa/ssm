@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.soft.platform.developer.mapper.TableColumnMapper">
+    <resultMap id="BaseResultMap" type="com.soft.platform.developer.model.TableColumn">
+        <id column="column_id" property="columnId" jdbcType="VARCHAR"/>
+        <result column="column_name" property="columnName" jdbcType="VARCHAR"/>
+        <result column="data_type" property="dataType" jdbcType="VARCHAR"/>
+        <result column="data_length" property="dataLength" jdbcType="VARCHAR"/>
+        <result column="nullable" property="isNullable" jdbcType="VARCHAR"/>
+        <result column="comments" property="columnComments" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="findOracleTableColumns" resultMap="BaseResultMap">
+     select col.column_id,
+       col.column_name,
+       col.data_type,
+       col.data_length,
+       col.nullable,
+       cm.comments
+  from user_tab_columns col
+  left join user_col_comments cm
+    on col.column_name = cm.column_name
+   and col.table_name = cm.table_name
+ where col.table_name =  #{tableName}
+</select>
+
+
+</mapper>

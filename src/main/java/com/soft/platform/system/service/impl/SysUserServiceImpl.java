@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
+/**
+ *
+ */
 @Service("sysUserService")
 public class SysUserServiceImpl implements SysUserService {
 
