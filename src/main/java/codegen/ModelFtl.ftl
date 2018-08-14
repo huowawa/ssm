@@ -16,17 +16,17 @@ import java.sql.Timestamp;
 public class ${className} implements java.io.Serializable  {
     <#list columns as column>
     /**
-     * ${column.comments!"注释"}
+     * ${column.columnComments!"注释"}
      */
-    private ${column.dataType} ${column.columnName};
+    private ${column.dataType} ${column.columnNameField};
     </#list>
     
     <#list columns as column>
-    public ${column.dataType} get${column.columnName?cap_first}() {
-        return ${column.columnName};
+    public ${column.dataType} get${column.columnNameField?cap_first}() {
+        return ${column.columnNameField};
     }
-    public void set${column.columnName?cap_first}(${column.dataType} ${column.columnName}) {
-        this.${column.columnName} = ${column.columnName};
+    public void set${column.columnNameField?cap_first}(${column.dataType} ${column.columnNameField}) {
+        this.${column.columnNameField} = ${column.columnNameField};
     }
     </#list>
 

@@ -10,5 +10,5 @@ package com.soft.core.service;
  * @version: 1.0
  * @date 2018-08-13 21:56
  */
-public class BaseServiceImpl extends BaseService {
+public class BaseServiceImpl implements BaseService {
 }

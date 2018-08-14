@@ -26,18 +26,10 @@ public class SysUserController {
      */
    @RequestMapping("/all")
     public List<SysUser> findAllUsers(HttpServletRequest request){
-       System.out.print("hello");
-
-       System.out.print("hello");
-       System.out.print("hello");
-       System.out.print(12);
-
-       return sysUserService.findAllUsers();
-
-    }
-
-    public void show(){
-
+       String url = SysUserController.class.getPackage().toString();
+       System.out.print(url);
+     //  return sysUserService.findAllUsers();
+       return null;
     }
 
 

@@ -41,6 +41,10 @@ public class TableColumn {
      */
     private String columnName;
     /**
+     * 小写形式的列名称
+     */
+    private String lowerCaseColumn;
+    /**
      * 列注释
      */
     private String columnComments;
@@ -82,9 +86,9 @@ public class TableColumn {
      */
     private String foreignRefColumnName;
     /**
-     * 旧列名称
+     * 转成驼峰命名法后的名称
      */
-    private String oldColumnName;
+    private String columnNameField;
     /**
      * 是否是新增的列 1:是 -1:不是
      */
@@ -256,18 +260,12 @@ public class TableColumn {
         this.defaultValue = defaultValue;
     }
 
-    /**
-     * @return the oldColumnName
-     */
-    public String getOldColumnName() {
-        return oldColumnName;
+    public String getColumnNameField() {
+        return columnNameField;
     }
 
-    /**
-     * @param oldColumnName the oldColumnName to set
-     */
-    public void setOldColumnName(String oldColumnName) {
-        this.oldColumnName = oldColumnName;
+    public void setColumnNameField(String columnNameField) {
+        this.columnNameField = columnNameField;
     }
 
     /**
@@ -298,5 +296,11 @@ public class TableColumn {
         this.columnId = columnId;
     }
 
+    public String getLowerCaseColumn() {
+        return lowerCaseColumn;
+    }
 
+    public void setLowerCaseColumn(String lowerCaseColumn) {
+        this.lowerCaseColumn = lowerCaseColumn;
+    }
 }

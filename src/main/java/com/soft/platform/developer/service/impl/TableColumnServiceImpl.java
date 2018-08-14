@@ -3,6 +3,7 @@
  */
 package com.soft.platform.developer.service.impl;
 
+import com.soft.core.util.ConvertUtil;
 import com.soft.platform.developer.mapper.TableColumnMapper;
 import com.soft.platform.developer.model.TableColumn;
 import com.soft.platform.developer.service.TableColumnService;
@@ -41,7 +42,8 @@ import java.util.List;
     }
 
     private void genComplateColumn(TableColumn col) {
-        col.setOldColumnName(col.getColumnName());
+        col.setColumnNameField(ConvertUtil.camelName(col.getColumnName()));
+        col.setLowerCaseColumn(col.getColumnName().toLowerCase());
         String isNullable = col.getIsNullable();
         String dataType = col.getDataType();
         String columnType = "String";

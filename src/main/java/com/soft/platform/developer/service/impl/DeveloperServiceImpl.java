@@ -47,7 +47,7 @@ public class DeveloperServiceImpl implements DeveloperService {
 
         List<TableColumn> tableColumns = tableColumnService.findOracleTableColumns(tableName);
 
-        String author = PlatPropertiesUtil.getPropertiesByPath("/conf/config.peroperties").getProperty("author");
+        String author = PlatPropertiesUtil.getPropertiesByPath("/conf/config.properties").getProperty("author");
         String format = "yyyy年MM月dd日  HH:mm:ss";
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         String currDate = sdf.format(new Date());
@@ -79,7 +79,7 @@ public class DeveloperServiceImpl implements DeveloperService {
         FreeMarkerUtil.writeFileToDisk("MapperFtl.ftl", root, daoPath + className + "Mapper.java");
 
         // 设置daoImp代码的生成路径
-        String daoImplPath = projectPath + "src/main/resources/" + packageName + "/mapper/";
+        String daoImplPath = projectPath + "src/main/resources/mapper/";
         FreeMarkerUtil.writeFileToDisk("MapperXmlFtl.ftl", root, daoImplPath + className + "Mapper.xml");
 
         // 设置model代码的生成路径
@@ -96,7 +96,7 @@ public class DeveloperServiceImpl implements DeveloperService {
         FreeMarkerUtil.writeFileToDisk("ServiceFtl.ftl", root, servicePath + className + "Service.java");
 
         // 设置serviceImpl代码的生成路径
-        String serviceImplPath = servicePath;
+        String serviceImplPath = projectPath + "src/main/java/com/soft/platform/" + packageName + "/service/impl/";
         FreeMarkerUtil.writeFileToDisk("ServiceImplFtl.ftl", root, serviceImplPath + className
                 + "ServiceImpl.java");
         // 设置action代码的生成路径

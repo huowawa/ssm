@@ -22,6 +22,7 @@
     on col.column_name = cm.column_name
    and col.table_name = cm.table_name
  where col.table_name =  #{tableName}
+ order by col.column_id
 </select>
 
 

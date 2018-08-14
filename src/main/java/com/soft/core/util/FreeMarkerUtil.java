@@ -23,12 +23,15 @@ public class FreeMarkerUtil {
      *
      * @param name
      * @return
-     * @author Perfect Guo
+     * @author David Lin
      */
     public static Template getTemplate(String name) {
-        Configuration cfg = new Configuration();
-        cfg.setClassForTemplateLoading(FreeMarkerUtil.class, "/com/soft/core/codegen");
+        Configuration cfg = new Configuration(Configuration.VERSION_2_3_22);
+
         try {
+            cfg.setClassForTemplateLoading(FreeMarkerUtil.class,"/codegen");
+            //设置默认编码格式
+            cfg.setDefaultEncoding("UTF-8");
             return cfg.getTemplate(name);
         } catch (IOException e) {
             e.printStackTrace();
@@ -42,7 +45,7 @@ public class FreeMarkerUtil {
      * @param root
      * @param tplString
      * @param filePath
-     * @author Neil Yu
+     * @author David Lin
      */
     public static void writeFileToDisk(Map<String, Object> root,
                                        String tplString, String filePath) {
@@ -79,7 +82,7 @@ public class FreeMarkerUtil {
      * @param ftlFileName :ftl文件名称
      * @param root        :数据根
      * @param filePath    :输出文件的路径
-     * @author Perfect Guo
+     * @author David Lin
      */
     public static void writeFileToDisk(String ftlFileName,
                                        Map<String, Object> root, String filePath) {

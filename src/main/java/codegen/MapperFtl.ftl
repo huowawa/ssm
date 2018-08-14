@@ -6,7 +6,7 @@ package com.soft.platform.${packageName}.mapper;
 import java.util.List;
 import java.util.Map;
 
-import com.soft.core.BaseMapper;
+import com.soft.core.mapper.BaseMapper;
 import com.soft.platform.${packageName}.model.${className};
 
 /**

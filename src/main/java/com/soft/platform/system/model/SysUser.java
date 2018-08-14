@@ -4,37 +4,37 @@ public class SysUser {
     /**
      * 主键
      */
-    private String sysUserid;
+    private String userId;
     /**
      * 姓名
      */
-    private String sysUserName;
+    private String fullName;
     /**
      * 用户名
      */
-    private String sysUserAccount;
+    private String userName;
 
-    public String getSysUserid() {
-        return sysUserid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setSysUserid(String sysUserid) {
-        this.sysUserid = sysUserid;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getSysUserName() {
-        return sysUserName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setSysUserName(String sysUserName) {
-        this.sysUserName = sysUserName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getSysUserAccount() {
-        return sysUserAccount;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setSysUserAccount(String sysUserAccount) {
-        this.sysUserAccount = sysUserAccount;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

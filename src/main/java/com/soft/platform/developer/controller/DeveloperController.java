@@ -41,10 +41,10 @@ public class DeveloperController {
     public String genCode(HttpServletRequest request) {
         try {
             Map<String, Object> paramMap = new HashMap<>(8);
-            paramMap.put("packagename", "fdaks");
-            paramMap.put("tablename", "FDAKS_ETS_MESSAGE"); // 表名称
-            paramMap.put("classname", "FdaksEtsMessage"); // 获取CLASS名称
-            paramMap.put("entityname", "职称考试-短信操作"); // 获取实体中文名称
+            paramMap.put("packagename", "system");
+            paramMap.put("tablename", "T_MSJW_SYSTEM_SYSROLE"); // 表名称
+            paramMap.put("classname", "SysRole"); // 获取CLASS名称
+            paramMap.put("entityname", "系统管理-角色管理"); // 获取实体中文名称
             developerService.genCode(paramMap);
         } catch (Exception e) {
             e.printStackTrace();

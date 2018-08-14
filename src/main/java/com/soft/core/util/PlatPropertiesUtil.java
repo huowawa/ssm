@@ -24,7 +24,7 @@ public class PlatPropertiesUtil {
      * @param fileName
      * @return
      */
-    public static Properties getPropertiesByPath(String fileName) throws  Exception {
+    public static Properties getPropertiesByPath(String fileName) throws Exception {
         Resource resource = new ClassPathResource(fileName);
         Properties properties = PropertiesLoaderUtils.loadProperties(resource);
         return properties;

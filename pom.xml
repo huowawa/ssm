@@ -174,10 +174,16 @@
         <includes>
           <include>**/*.properties</include>
           <include>**/*.xml</include>
+          <include>**/*.ftl</include>
         </includes>
       </resource>
       <resource>
         <directory>${basedir}/src/main/resources</directory>
+          <includes>
+              <include>**/*.properties</include>
+              <include>**/*.xml</include>
+              <include>**/*.ftl</include>
+          </includes>
       </resource>
     </resources>
 
