@@ -13,6 +13,6 @@
         SELECT
         <include refid="Base_Column_List"/>
         FROM
-        t_msjw_system_sysuser
+        sys_user
     </select>
 </mapper>
