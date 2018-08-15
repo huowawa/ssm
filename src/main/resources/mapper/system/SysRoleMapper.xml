@@ -8,7 +8,7 @@
     </resultMap>
 
     <select id="findRoleByGroupId" resultMap="BaseResultMap" >
-        select   r.role_id,r.role_name,r.role_code  from t_msjw_system_sysrole r
+        select   r.role_id,r.role_name,r.role_code  from sys_role r
         where r.group_id = #{groupid}
     </select>
 
