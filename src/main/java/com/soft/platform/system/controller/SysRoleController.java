@@ -44,6 +44,7 @@ public class SysRoleController {
     @RequestMapping("/findRole")
     @ResponseBody
     public List<SysRole> findRole(HttpServletRequest request){
+        System.out.print("HEllo ");
         return sysRoleService.findRoleByGroupId("4028098156928d9101569300533d0039");
     }
 
