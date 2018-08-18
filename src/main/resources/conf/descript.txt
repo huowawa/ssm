@@ -1,0 +1,13 @@
+Ctrl+Alt+L
+Ctrl+Alt+T
+Ctrl+Alt+V
+Ctrl+Alt+B    在某个调用的方法名上使用会跳到具体的实现处，可以跳过接口
+Ctrl+Alt+O    优化导入的类，可以对当前文件和整个包目录使用
+Ctrl+Alt+S 打开 IntelliJ IDEA 系统设置
+
+Ctrl + Shift + F  根据输入内容查找整个项目 或 指定目录内文件
+Ctrl+Shift+R
+Ctrl+Shift+U
+Ctrl+Shift+N
+Ctrl+Shift+/
+Ctrl+Shift+空格
