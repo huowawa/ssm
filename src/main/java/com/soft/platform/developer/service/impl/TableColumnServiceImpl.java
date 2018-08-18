@@ -41,21 +41,42 @@ import java.util.List;
         return columns;
     }
 
-    private void genComplateColumn(TableColumn col) {
+        /**
+         * 根据表名称获取主键列名称
+         *
+         * @param tableName
+         * @return
+         */
+        @Override
+        public String getPrimaryKey(String tableName) {
+            return mapper.getPrimaryKey(tableName);
+        }
+
+        private void genComplateColumn(TableColumn col) {
         col.setColumnNameField(ConvertUtil.camelName(col.getColumnName()));
         col.setLowerCaseColumn(col.getColumnName().toLowerCase());
         String isNullable = col.getIsNullable();
         String dataType = col.getDataType();
         String columnType = "String";
+        String jdbcType = "VARCHAR";
 
         if (dataType.contains("CHAR")) {
             columnType = "String";
         } else if (dataType.contains("NUMBER")) {
             columnType = "BigDecimal";
+            jdbcType = "DOUBLE";
         } else if (dataType.contains("DATE")) {
             columnType = "Timestamp";
+            jdbcType = "DATE";
+        }else if(dataType.contains("CLOB")){
+            columnType = "String";
+            jdbcType = "CLOB";
+        }else if(dataType.contains("TIMESTAMP")){
+            columnType = "Timestamp";
+            jdbcType = "TIMESTAMP";
         }
         col.setDataType(columnType);
+        col.setJdbcType(jdbcType);
 
         if ("-1".equals(isNullable)) {
             col.setIsNullable("-1");

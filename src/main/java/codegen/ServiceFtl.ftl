@@ -20,6 +20,6 @@ import   com.soft.platform.${packageName}.model.${className};
  * @version 1.0
  * @created ${currDate}
  */
-public interface ${className}Service  extends BaseService {
+public interface ${className}Service  extends BaseService<${className}> {
     
 }

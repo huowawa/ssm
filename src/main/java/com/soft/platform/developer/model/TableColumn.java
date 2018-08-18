@@ -97,6 +97,10 @@ public class TableColumn {
      * 所处的表名称
      */
     private String tableName;
+    /**
+     * jdbcType
+     */
+    private String jdbcType;
 
     /**
      * @return the tableName
@@ -302,5 +306,13 @@ public class TableColumn {
 
     public void setLowerCaseColumn(String lowerCaseColumn) {
         this.lowerCaseColumn = lowerCaseColumn;
+    }
+
+    public String getJdbcType() {
+        return jdbcType;
+    }
+
+    public void setJdbcType(String jdbcType) {
+        this.jdbcType = jdbcType;
     }
 }

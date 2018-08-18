@@ -21,5 +21,11 @@ public interface TableColumnService {
      * @return
      */
     List<TableColumn> findOracleTableColumns(String tableName);
+    /**
+     * 根据表名称获取主键列名称
+     * @param tableName
+     * @return
+     */
+    String getPrimaryKey(String tableName);
 
 }

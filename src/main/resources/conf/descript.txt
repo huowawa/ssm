@@ -11,3 +11,16 @@ Ctrl+Shift+U
 Ctrl+Shift+N
 Ctrl+Shift+/
 Ctrl+Shift+空格
+
+Ctrl+Y
+Ctrl+N
+Ctrl+Q
+Ctrl+U
+Ctrl+R
+Ctrl+O
+Ctrl+I
+Ctrl+H
+Ctrl+G
+
+Alt + Insert
+Shift+F6  重构、重命名方法 类名  变量名

@@ -25,5 +25,12 @@
  order by col.column_id
 </select>
 
+    <select id="getPrimaryKey" resultType="string">
+        select cu.column_name from user_cons_columns cu, user_constraints au
+        where cu.constraint_name = au.constraint_name
+        and au.constraint_type = 'P' and au.table_name =#{tableName}
+         and rownum=1
+    </select>
+
 
 </mapper>

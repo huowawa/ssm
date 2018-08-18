@@ -30,12 +30,23 @@ import  org.springframework.stereotype.Service;
  * @created ${currDate}
  */
 @Service("${className?uncap_first}Service")
-public class ${className}ServiceImpl  extends BaseServiceImpl implements ${className}Service {
+public class ${className}ServiceImpl  extends BaseServiceImpl<${className}> implements ${className}Service {
     /**
      * 所引入的mapper
      */
     @Resource
     private ${className}Mapper ${className?uncap_first}Mapper;
+
+
+     /**
+     * 获取mapper对象
+     *
+     * @return
+     */
+    @Override
+    protected BaseMapper getMapper() {
+        return ${className?uncap_first}Mapper;
+    }
     
 
 }

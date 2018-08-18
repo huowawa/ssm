@@ -42,9 +42,9 @@ public class DeveloperController {
         try {
             Map<String, Object> paramMap = new HashMap<>(8);
             paramMap.put("packagename", "system");
-            paramMap.put("tablename", "T_MSJW_SYSTEM_SYSROLE"); // 表名称
-            paramMap.put("classname", "SysRole"); // 获取CLASS名称
-            paramMap.put("entityname", "系统管理-角色管理"); // 获取实体中文名称
+            paramMap.put("tablename", "t_msjw_system_sysuser"); // 表名称
+            paramMap.put("classname", "SysUser"); // 获取CLASS名称
+            paramMap.put("entityname", "系统管理-用户管理"); // 获取实体中文名称
             developerService.genCode(paramMap);
         } catch (Exception e) {
             e.printStackTrace();

@@ -19,4 +19,5 @@ public interface DeveloperService {
      * @throws Exception
      */
     public void genCode(Map<String,Object> param) throws  Exception;
+
 }
