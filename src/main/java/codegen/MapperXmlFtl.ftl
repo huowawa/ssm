@@ -47,6 +47,7 @@
     <insert id="saveRecord" parameterType="${className}">
         insert into  ${tableName}
         <trim prefix="(" suffix=")" suffixOverrides="," >
+            ${parimarykeyname},
              <#list columns as column>
                  <if test="${column.columnNameField} != null">
                      ${column.lowerCaseColumn},
@@ -54,9 +55,10 @@
              </#list>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
+       #${bigleft} ${primarykeyProper},jdbcType=${primarykeyJdbcType} },
              <#list columns as column>
                  <if test="${column.columnNameField} != null">
-                     ${column.lowerCaseColumn} =#${bigleft} ${column.columnNameField},jdbcType=${column.jdbcType} },
+                     #${bigleft} ${column.columnNameField},jdbcType=${column.jdbcType} },
                  </if>
              </#list>
         </trim>
@@ -75,10 +77,13 @@
         where  ${parimarykeyname}=#${bigleft} ${primarykeyProper},jdbcType=${primarykeyJdbcType} }
     </update>
 
+    <!--1. 如果传入的是单参数且参数类型是一个List的时候，collection属性值为list-->
+    <!--2. 如果传入的是单参数且参数类型是一个array数组的时候，collection的属性值为array-->
+    <!--3. 如果传入的参数是多个的时候，我们就需要把它们封装成一个Map了，当然单参数也可-->
     <delete id="removeRecords">
         delete from   ${tableName}
         where  ${parimarykeyname} in
-        <foreach item="item" index="index" collection="colValues"
+        <foreach item="item" index="index" collection="array"
                  open="(" separator="," close=")">
         #${bigleft}item}
         </foreach>
