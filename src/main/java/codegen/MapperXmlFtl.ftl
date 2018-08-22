@@ -68,7 +68,7 @@
         <set>
              <#list columns as column>
                  <if test="${column.columnNameField} != null">
-                     ${column.lowerCaseColumn} =#${bigleft} ${column.columnNameField},jdbcType=${column.jdbcType} }
+                     ${column.lowerCaseColumn} =#${bigleft} ${column.columnNameField},jdbcType=${column.jdbcType} },
                  </if>
              </#list>
         </set>
