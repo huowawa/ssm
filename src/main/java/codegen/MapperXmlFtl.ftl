@@ -49,14 +49,14 @@
         <trim prefix="(" suffix=")" suffixOverrides="," >
              <#list columns as column>
                  <if test="${column.columnNameField} != null">
-                     ${column.lowerCaseColumn}
+                     ${column.lowerCaseColumn},
                  </if>
              </#list>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
              <#list columns as column>
                  <if test="${column.columnNameField} != null">
-                     ${column.lowerCaseColumn} =#${bigleft} ${column.columnNameField},jdbcType=${column.jdbcType} }
+                     ${column.lowerCaseColumn} =#${bigleft} ${column.columnNameField},jdbcType=${column.jdbcType} },
                  </if>
              </#list>
         </trim>
