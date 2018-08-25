@@ -66,6 +66,7 @@
         <!-- 加载mybatis的全局配置文件路径 -->
         <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"></property>
         <property name="mapperLocations" value="classpath:mapper/*/*.xml"/>
+
     </bean>
 
     <!-- 配置mapper接口扫描器 -->

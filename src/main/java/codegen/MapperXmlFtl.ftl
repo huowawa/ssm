@@ -43,8 +43,23 @@
              </#list>
         </where>
     </select>
+    <select id="findList" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList" />
+        from   ${tableName}
+        <where>
+             <#list columns as column>
+                 <if test="${column.columnNameField} != null">
+                     ${column.lowerCaseColumn} = #${bigleft} ${column.columnNameField} }
+                 </if>
+             </#list>
+        </where>
+    </select>
 
     <insert id="saveRecord" parameterType="${className}">
+        <selectKey keyProperty="${primarykeyProper}" resultType="String" order="BEFORE">
+            select sys_guid() from dual
+        </selectKey>
         insert into  ${tableName}
         <trim prefix="(" suffix=")" suffixOverrides="," >
             ${parimarykeyname},

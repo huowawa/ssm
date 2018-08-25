@@ -4,6 +4,7 @@
 package com.soft.core.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 基本sql操作映射
@@ -33,6 +34,13 @@ public interface BaseMapper<T> {
      * @return
      */
     List<T> findRecord(T model);
+
+    /**
+     * 根据条件查询记录列表
+     * @param params
+     * @return
+     */
+    List<T> findList(Map<String,Object> params);
 
     /**
      * 保存

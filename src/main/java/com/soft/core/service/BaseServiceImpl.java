@@ -3,9 +3,13 @@
  */
 package com.soft.core.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.soft.core.mapper.BaseMapper;
+import org.apache.commons.collections4.MapUtils;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 基本业务实现
@@ -79,5 +83,23 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
      */
     public int removeRecords(String[] colValues) {
         return  getMapper().removeRecords(colValues);
+    }
+
+    /**
+     * 通用分页
+     *
+     * @param params
+     * @return
+     */
+    @Override
+    public PageInfo<T> datagrid(Map<String, Object> params) {
+        int pageNum = MapUtils.getInteger(params,"pageNum");
+        int pageSize = MapUtils.getInteger(params,"pageSize");
+        String orderBｙ = MapUtils.getString(params,"orderstr");
+        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.orderBy(orderBｙ);
+        List<T> list = getMapper().findList(params);
+        PageInfo<T> pageInfo  = new PageInfo<>(list);
+        return pageInfo;
     }
 }

@@ -36,8 +36,6 @@ public class ${className}ServiceImpl  extends BaseServiceImpl<${className}> impl
      */
     @Resource
     private ${className}Mapper ${className?uncap_first}Mapper;
-
-
      /**
      * 获取mapper对象
      *

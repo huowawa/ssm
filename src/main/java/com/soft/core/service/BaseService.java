@@ -3,7 +3,10 @@
  */
 package com.soft.core.service;
 
+import com.github.pagehelper.PageInfo;
+
 import java.util.List;
+import java.util.Map;
 
 /**
  * 基本业务骨架接口
@@ -54,4 +57,11 @@ public interface BaseService<T> {
      * @return
      */
     int removeRecords(String[] colValues);
+
+    /**
+     * 通用分页
+     * @param params
+     * @return
+     */
+    PageInfo<T> datagrid(Map<String,Object> params);
 }

@@ -5,6 +5,8 @@ Ctrl+Alt+B    在某个调用的方法名上使用会跳到具体的实现处，
 Ctrl+Alt+O    优化导入的类，可以对当前文件和整个包目录使用
 Ctrl+Alt+S 打开 IntelliJ IDEA 系统设置
 
+Ctrl+Alt+Shift+N  快速找到Controller方法
+
 Ctrl + Shift + F  根据输入内容查找整个项目 或 指定目录内文件
 Ctrl+Shift+R
 Ctrl+Shift+U
@@ -12,15 +14,20 @@ Ctrl+Shift+N
 Ctrl+Shift+/
 Ctrl+Shift+空格
 
+CTRL+SHIFT+ENTER 在当前行任何地方可以快速在末尾生成分号；
+Ctrl+Shift+F7结合F3  可以高亮某个变量
+Ctrl+Shift+I 弹窗查看方法
+
 Ctrl+Y
 Ctrl+N
 Ctrl+Q
-Ctrl+U
+Ctrl+U  跳到父类接口
 Ctrl+R
 Ctrl+O
 Ctrl+I
 Ctrl+H
 Ctrl+G
 
+Alt +F7  列出变量在哪些地方被使用了 哪些地方调用了方法 类
 Alt + Insert
 Shift+F6  重构、重命名方法 类名  变量名
