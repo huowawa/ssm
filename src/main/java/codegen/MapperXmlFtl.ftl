@@ -13,6 +13,7 @@
     </sql>
 
     <select id="getById" resultMap="BaseResultMap">
+        select
         <include refid="BaseColumnList" />
         from   ${tableName}
         where  ${parimarykeyname}=#${bigleft} ${primarykeyProper},jdbcType=${primarykeyJdbcType} }
