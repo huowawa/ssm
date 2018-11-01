@@ -161,16 +161,23 @@ public class HttpClientUtil {
      */
     public static String sendHttpGet(String url, Map<String, Object> paramsMap, Map<String, String> headMap) throws Exception {
         URIBuilder uriBuilder = new URIBuilder(url);
-        //设置get请求参数
-        for (Map.Entry<String, Object> entry : paramsMap.entrySet()) {
-            uriBuilder.setParameter(entry.getKey(), entry.getValue().toString());
+
+        if(null != paramsMap){
+            //设置get请求参数
+            for (Map.Entry<String, Object> entry : paramsMap.entrySet()) {
+                uriBuilder.setParameter(entry.getKey(), entry.getValue().toString());
+            }
         }
+
         // 创建http GET请求
         HttpGet httpGet = new HttpGet(uriBuilder.build());
-        //设置请求头
-        for (Map.Entry<String, String> entry : headMap.entrySet()) {
-            httpGet.setHeader(entry.getKey(), entry.getValue());
+        if (null != headMap) {
+            //设置请求头
+            for (Map.Entry<String, String> entry : headMap.entrySet()) {
+                httpGet.setHeader(entry.getKey(), entry.getValue());
+            }
         }
+
         return executePoolingHttp(httpGet);
     }
 

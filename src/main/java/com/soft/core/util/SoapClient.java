@@ -4,6 +4,9 @@
 package com.soft.core.util;
 
 import com.soft.core.model.SoapParamBean;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import java.util.Map;
 
@@ -16,7 +19,7 @@ import java.util.Map;
  */
 public class SoapClient {
 
-    public void invokeWebService(SoapParamBean soapParamBean) throws  Exception {
+    public String invokeWebService(SoapParamBean soapParamBean) throws  Exception {
         String url = soapParamBean.getUrl();
         String method = soapParamBean.getMethod();
         String nameSpace = soapParamBean.getNameSpace();
@@ -42,6 +45,9 @@ public class SoapClient {
 
         String result = HttpClientUtil.sendHttpPost(url, soapBuilder.toString(), null);
         System.out.println(result);
+        Document soapRes = Jsoup.parse(result);
+        Elements returnEle = soapRes.getElementsByTag("return");
+       return returnEle.text();
     }
 
 }

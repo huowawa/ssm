@@ -1,7 +1,7 @@
 /*
  * Copyright (c)
  */
-package  com.soft.platform.system.service.impl;
+package com.soft.platform.system.service.impl;
 
 import com.soft.core.mapper.BaseMapper;
 import com.soft.core.service.BaseServiceImpl;
@@ -14,20 +14,20 @@ import javax.annotation.Resource;
 
 /**
  * 描述  系统管理-用户管理操作service
+ *
  * @author David Lin
  * @version 1.0
- * @created 2018年08月19日  00:25:53
+ * @created 2018年08月22日  22:21:05
  */
 @Service("sysUserService")
-public class SysUserServiceImpl  extends BaseServiceImpl<SysUser> implements SysUserService {
+public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements SysUserService {
     /**
      * 所引入的mapper
      */
     @Resource
     private SysUserMapper sysUserMapper;
 
-
-     /**
+    /**
      * 获取mapper对象
      *
      * @return
@@ -36,6 +36,24 @@ public class SysUserServiceImpl  extends BaseServiceImpl<SysUser> implements Sys
     protected BaseMapper getMapper() {
         return sysUserMapper;
     }
-    
+
+
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,16 +5,20 @@
 package  com.soft.platform.system.model;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 /**
  * 描述   系统管理-用户管理实体对象
  * @author David Lin
  * @version 1.0
- * @created 2018年08月19日  00:25:53
+ * @created 2018年08月22日  22:21:05
  */
 public class SysUser implements java.io.Serializable  {
-
+     /**
+     * 主键
+     */
     private String userId;
+
     /**
      * 注释
      */
@@ -103,7 +107,14 @@ public class SysUser implements java.io.Serializable  {
      * 登录失败次数
      */
     private BigDecimal failCount;
-    
+
+   public String getUserId(){
+        return userId;
+    }
+
+    public void setUserId(String userId){
+        this.userId = userId;
+    }
     public String getDepartId() {
         return departId;
     }
@@ -237,11 +248,5 @@ public class SysUser implements java.io.Serializable  {
         this.failCount = failCount;
     }
 
-    public String getUserId() {
-        return userId;
-    }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 }
