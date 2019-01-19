@@ -5,7 +5,6 @@
 package  com.soft.platform.system.model;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 
 /**
  * 描述   系统管理-用户管理实体对象
@@ -248,5 +247,32 @@ public class SysUser implements java.io.Serializable  {
         this.failCount = failCount;
     }
 
-
+    @Override
+    public String toString() {
+        return "SysUser{" +
+                "userId='" + userId + '\'' +
+                ", departId='" + departId + '\'' +
+                ", username='" + username + '\'' +
+                ", fullname='" + fullname + '\'' +
+                ", password='" + password + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
+                ", status=" + status +
+                ", createTime='" + createTime + '\'' +
+                ", sex=" + sex +
+                ", isModifypass='" + isModifypass + '\'' +
+                ", branchId='" + branchId + '\'' +
+                ", position='" + position + '\'' +
+                ", chineseAccount='" + chineseAccount + '\'' +
+                ", isLawperson='" + isLawperson + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", executorid='" + executorid + '\'' +
+                ", credential='" + credential + '\'' +
+                ", sdate='" + sdate + '\'' +
+                ", edate='" + edate + '\'' +
+                ", noEdate='" + noEdate + '\'' +
+                ", fixedPhone='" + fixedPhone + '\'' +
+                ", failCount=" + failCount +
+                '}';
+    }
 }

@@ -4,17 +4,20 @@
 package com.soft.platform.system.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.soft.core.model.PaginBean;
+import com.soft.core.util.SpringContextUtil;
 import com.soft.platform.system.model.SysUser;
 import com.soft.platform.system.service.SysUserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
@@ -38,12 +41,13 @@ public class SysUserController {
     /**
      * 引入Service
      */
-    @Resource
+    //@Resource
     private SysUserService sysUserService;
 
     @RequestMapping("/getUser")
     @ResponseBody
     public SysUser getRecord(HttpServletRequest request) {
+        sysUserService = (SysUserService) SpringContextUtil.getBean("sysUserService");
         SysUser param = new SysUser();
         param.setUsername("lysh_lxh");
         //SysUser sysuser = sysUserService.getById("402883524863ab1f014863ab1f340000");
@@ -104,16 +108,53 @@ public class SysUserController {
         return sysUserService.datagrid(params);
     }
 
+    @RequestMapping("/userGrid")
+    @ResponseBody
+    public PaginBean<SysUser> userGrid(HttpServletRequest request){
+        SysUser param = new SysUser();
+        param.setDepartId("4028b8a455473c240155473deccb01ce");
+        List<SysUser> userList = sysUserService.findRecord(param);
+        PaginBean<SysUser> paginBean = new PaginBean<>();
+        paginBean.setCode(0);
+        paginBean.setMsg("success");
+        paginBean.setData(userList);
+        paginBean.setCount(userList.size());
+        return paginBean;
+    }
+
     @RequestMapping("/hello")
     public ModelAndView hello(HttpServletRequest request) {
         // SysUser sysuser = sysUserService.getById("402883524863ab1f014863ab1f340000");
         //  request.setAttribute("sysUser",sysuser);
-        return new ModelAndView("/main/index");
+        return new ModelAndView("/main/index2");
     }
 
     @RequestMapping("/learn")
     public ModelAndView learn(HttpServletRequest request) {
         return new ModelAndView("/layui/StartLearn");
+    }
+
+    @RequestMapping("/testrequestbody")
+    @ResponseBody
+    public String testRequestBody(@RequestBody SysUser sysUser, HttpServletResponse response){
+        System.out.println(sysUser.toString());
+        return "success";
+    }
+
+    @RequestMapping("/userHtml")
+    public String jumpToUserHtml(HttpServletRequest request){
+        request.setAttribute("username","汤姆");
+        request.setAttribute("bookname",".net");
+        SysUser param = new SysUser();
+        param.setDepartId("4028b8a455473c240155473deccb01ce");
+        List<SysUser> userList = sysUserService.findRecord(param);
+        request.setAttribute("userlist",userList);
+        return "userhtml";
+    }
+
+    @RequestMapping("/userList")
+    public String userList(HttpServletRequest request){
+        return "system/sysuser/userList";
     }
 
 

@@ -73,9 +73,9 @@ public class HttpClientUtil {
         CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(connectionManager)
                 .setRetryHandler(retryHandler(5)).build();
         // 构建请求配置信息
-        RequestConfig config = RequestConfig.custom().setConnectTimeout(1000) // 创建连接的最长时间
-                .setConnectionRequestTimeout(500) // 从连接池中获取到连接的最长时间
-                .setSocketTimeout(3 * 1000) // 数据传输的最长时间10s
+        RequestConfig config = RequestConfig.custom().setConnectTimeout(5000) // 创建连接的最长时间
+                .setConnectionRequestTimeout(5000) // 从连接池中获取到连接的最长时间
+                .setSocketTimeout(10 * 1000) // 数据传输的最长时间10s
                 .build(); // 提交请求前测试连接是否可用
 
         // 设置请求配置信息

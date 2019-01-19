@@ -10,7 +10,8 @@
 
     <!-- 配置组件扫描，springmvc容器中只扫描Controller注解 -->
     <context:component-scan base-package="com.soft.platform" use-default-filters="false">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
     <!--静态资源映射-->
@@ -18,57 +19,94 @@
     表示当浏览器有静态资源请求的时候，并且请求url路径中带有：/js/，则这个资源跑到webapp目录下的/WEB-INF/statics/js/去找
     比如我们在 JSP 中引入一个 js 文件：src="${webRoot}/js/jQuery-core/jquery-1.6.1.min.js
     -->
-    <!--<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
-    <mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>-->
-<!--    <mvc:resources mapping="/css/**" location="/WEB-INF/css/"/>
+    <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"/>
     <mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>
-    <mvc:resources mapping="/images/**" location="/WEB-INF/images/"/>-->
+     <mvc:resources mapping="/css/**" location="/WEB-INF/css/"/>
+    <!--    <mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>
+     <mvc:resources mapping="/images/**" location="/WEB-INF/images/"/>-->
     <!-- 当在web.xml 中 DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源 -->
     <!--如果是映射*.do 则/WEB-INF/下的静态资源无法加载-->
-    <mvc:default-servlet-handler />
+    <mvc:default-servlet-handler/>
 
     <mvc:annotation-driven>
         <!--自定义HttpMessageConverter接收JSON格式的数据-->
         <!--设置不使用默认消息转换器-->
         <mvc:message-converters register-defaults="false">
-               <!--配置Spring转换器-->
-               <bean class="org.springframework.http.converter.StringHttpMessageConverter" />
-               <bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
-                <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
-                <bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
-                 <!--配置fastjson中实现HttpMessageConverter接口的转换器-->
-                 <bean  id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
-                     <!--加入支持的媒体类型:返回contentType-->
-                     <property name="supportedMediaTypes">
-                         <list>
-                             <!--这里顺序不能反，一定要先写text/html,不然IE下会出现下载提示-->
-                             <value>text/html;charset=UTF-8</value>
-                             <value>application/json;charset=UTF-8</value>
-                         </list>
-                     </property>
-                 </bean>
+            <!--配置Spring转换器-->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
+            <!--配置fastjson中实现HttpMessageConverter接口的转换器-->
+            <bean id="fastJsonHttpMessageConverter"
+                  class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4">
+                <!--加入支持的媒体类型:返回contentType-->
+                <property name="supportedMediaTypes">
+                    <list>
+                        <!--这里顺序不能反，一定要先写text/html,不然IE下会出现下载提示-->
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
     <!-- 配置视图解析器 -->
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀(如果最后一个还是表示文件夹,则最后的斜杠不要漏了) 使用JSP-->
     <!-- 默认的视图解析器 在上边的解析错误时使用 (默认使用html)- -->
-    <bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/webpages/"/><!--设置JSP文件的目录位置-->
-        <property name="suffix" value=".jsp"/>
+    <!-- <bean id="defaultViewResolver"
+           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+         <property name="prefix" value="/WEB-INF/webpages/"/>&lt;!&ndash;设置JSP文件的目录位置&ndash;&gt;
+         <property name="suffix" value=".jsp"/>
+     </bean>-->
+
+    <!-- SpringResourceTemplateResolver automatically integrates with Spring's own -->
+    <!-- resource resolution infrastructure, which is highly recommended.          -->
+    <bean id="templateResolver"
+          class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
+        <property name="prefix" value="/WEB-INF/templates/"/>
+        <property name="suffix" value=".html"/>
+        <property name="characterEncoding" value="UTF-8"/>
+        <!-- HTML is the default value, added here for the sake of clarity.          -->
+        <property name="templateMode" value="HTML"/>
+        <!-- Template cache is true by default. Set to false if you want             -->
+        <!-- templates to be automatically updated when modified.                    -->
+        <!--这个开发配置为false，避免改了模板还要重启服务器-->
+        <property name="cacheable" value="false"/>
     </bean>
 
-    <!-- 扫描mvc注解驱动，如：@RequestMapping, @Controller,@RequestBody,@ResponseBody.... -->
-   <!-- <mvc:annotation-driven/>-->
-
+    <!-- SpringTemplateEngine automatically applies SpringStandardDialect and      -->
+    <!-- enables Spring's own MessageSource message resolution mechanisms.         -->
+    <bean id="templateEngine"
+          class="org.thymeleaf.spring4.SpringTemplateEngine">
+        <property name="templateResolver" ref="templateResolver"/>
+        <!-- Enabling the SpringEL compiler with Spring 4.2.4 or newer can speed up  -->
+        <!-- execution in most scenarios, but might be incompatible with specific    -->
+        <!-- cases when expressions in one template are reused across different data -->
+        <!-- ypes, so this flag is "false" by default for safer backwards            -->
+        <!-- compatibility.                                                          -->
+        <property name="enableSpringELCompiler" value="true"/>
+    </bean>
+    <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+        <property name="templateEngine" ref="templateEngine" />
+        <property name="characterEncoding" value="UTF-8"/>
+    </bean>
 
 
     <!-- 配置文件上传 -->
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <!-- 设置上传文件的最大尺寸为5MB -->
+        <!-- 上传文件大小上限：单位为字节(10MB) -->
         <property name="maxUploadSize">
-            <value>5242880</value>
+            <value>10485760</value>
+        </property>
+        <property name="defaultEncoding">
+            <value>UTF-8</value>
         </property>
     </bean>
+
+    <bean id="springContextUtil" class="com.soft.core.util.SpringContextUtil"></bean>
+
+
 </beans>

@@ -27,4 +27,9 @@ public class CommonController {
 
         return  new ModelAndView("/react/"+page);
     }
+
+    @RequestMapping("/testui")
+    public String gotoTest(HttpServletRequest request){
+        return "test/testLayui";
+    }
 }

@@ -1,18 +1,492 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.soft.platform.system.mapper.SysUserMapper" >
-    <resultMap id="BaseResultMap" type="com.soft.platform.system.model.SysUser" >
-        <id column="user_id" property="userId" jdbcType="VARCHAR" />
-        <result column="username" property="userName" jdbcType="VARCHAR" />
-        <result column="fullname" property="fullName" jdbcType="VARCHAR" />
+<mapper namespace="com.soft.platform.system.mapper.SysUserMapper">
+    <resultMap id="BaseResultMap" type="com.soft.platform.system.model.SysUser">
+        <id column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="depart_id" property="departId" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="fullname" property="fullname" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="DOUBLE"/>
+        <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="DOUBLE"/>
+        <result column="is_modifypass" property="isModifypass" jdbcType="VARCHAR"/>
+        <result column="branch_id" property="branchId" jdbcType="VARCHAR"/>
+        <result column="position" property="position" jdbcType="VARCHAR"/>
+        <result column="chinese_account" property="chineseAccount" jdbcType="VARCHAR"/>
+        <result column="is_lawperson" property="isLawperson" jdbcType="VARCHAR"/>
+        <result column="birthday" property="birthday" jdbcType="VARCHAR"/>
+        <result column="executorid" property="executorid" jdbcType="VARCHAR"/>
+        <result column="credential" property="credential" jdbcType="VARCHAR"/>
+        <result column="sdate" property="sdate" jdbcType="VARCHAR"/>
+        <result column="edate" property="edate" jdbcType="VARCHAR"/>
+        <result column="no_edate" property="noEdate" jdbcType="VARCHAR"/>
+        <result column="fixed_phone" property="fixedPhone" jdbcType="VARCHAR"/>
+        <result column="fail_count" property="failCount" jdbcType="DOUBLE"/>
     </resultMap>
-    <sql id="Base_Column_List" >
-    user_id, username, fullname
-  </sql>
-    <select id="findAllUsers" resultMap="BaseResultMap">
-        SELECT
-        <include refid="Base_Column_List"/>
-        FROM
-        sys_user
+
+    <sql id="BaseColumnList">
+        user_id,depart_id,username,fullname,password,mobile,email,status,create_time,sex,is_modifypass,branch_id,position,chinese_account,is_lawperson,birthday,executorid,credential,sdate,edate,no_edate,fixed_phone,fail_count
+    </sql>
+
+    <select id="getById" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"/>
+        from t_msjw_system_sysuser
+        where user_id=#{ userId,jdbcType=VARCHAR }
     </select>
+
+    <select id="getRecord" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"/>
+        from t_msjw_system_sysuser
+        <where>
+            <if test="departId != null">
+                depart_id = #{ departId }
+            </if>
+            <if test="username != null">
+                username = #{ username }
+            </if>
+            <if test="fullname != null">
+                fullname = #{ fullname }
+            </if>
+            <if test="password != null">
+                password = #{ password }
+            </if>
+            <if test="mobile != null">
+                mobile = #{ mobile }
+            </if>
+            <if test="email != null">
+                email = #{ email }
+            </if>
+            <if test="status != null">
+                status = #{ status }
+            </if>
+            <if test="createTime != null">
+                create_time = #{ createTime }
+            </if>
+            <if test="sex != null">
+                sex = #{ sex }
+            </if>
+            <if test="isModifypass != null">
+                is_modifypass = #{ isModifypass }
+            </if>
+            <if test="branchId != null">
+                branch_id = #{ branchId }
+            </if>
+            <if test="position != null">
+                position = #{ position }
+            </if>
+            <if test="chineseAccount != null">
+                chinese_account = #{ chineseAccount }
+            </if>
+            <if test="isLawperson != null">
+                is_lawperson = #{ isLawperson }
+            </if>
+            <if test="birthday != null">
+                birthday = #{ birthday }
+            </if>
+            <if test="executorid != null">
+                executorid = #{ executorid }
+            </if>
+            <if test="credential != null">
+                credential = #{ credential }
+            </if>
+            <if test="sdate != null">
+                sdate = #{ sdate }
+            </if>
+            <if test="edate != null">
+                edate = #{ edate }
+            </if>
+            <if test="noEdate != null">
+                no_edate = #{ noEdate }
+            </if>
+            <if test="fixedPhone != null">
+                fixed_phone = #{ fixedPhone }
+            </if>
+            <if test="failCount != null">
+                fail_count = #{ failCount }
+            </if>
+        </where>
+    </select>
+
+    <select id="findRecord" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"/>
+        from t_msjw_system_sysuser
+        <where>
+            <if test="departId != null">
+                depart_id = #{ departId }
+            </if>
+            <if test="username != null">
+                username = #{ username }
+            </if>
+            <if test="fullname != null">
+                fullname = #{ fullname }
+            </if>
+            <if test="password != null">
+                password = #{ password }
+            </if>
+            <if test="mobile != null">
+                mobile = #{ mobile }
+            </if>
+            <if test="email != null">
+                email = #{ email }
+            </if>
+            <if test="status != null">
+                status = #{ status }
+            </if>
+            <if test="createTime != null">
+                create_time = #{ createTime }
+            </if>
+            <if test="sex != null">
+                sex = #{ sex }
+            </if>
+            <if test="isModifypass != null">
+                is_modifypass = #{ isModifypass }
+            </if>
+            <if test="branchId != null">
+                branch_id = #{ branchId }
+            </if>
+            <if test="position != null">
+                position = #{ position }
+            </if>
+            <if test="chineseAccount != null">
+                chinese_account = #{ chineseAccount }
+            </if>
+            <if test="isLawperson != null">
+                is_lawperson = #{ isLawperson }
+            </if>
+            <if test="birthday != null">
+                birthday = #{ birthday }
+            </if>
+            <if test="executorid != null">
+                executorid = #{ executorid }
+            </if>
+            <if test="credential != null">
+                credential = #{ credential }
+            </if>
+            <if test="sdate != null">
+                sdate = #{ sdate }
+            </if>
+            <if test="edate != null">
+                edate = #{ edate }
+            </if>
+            <if test="noEdate != null">
+                no_edate = #{ noEdate }
+            </if>
+            <if test="fixedPhone != null">
+                fixed_phone = #{ fixedPhone }
+            </if>
+            <if test="failCount != null">
+                fail_count = #{ failCount }
+            </if>
+        </where>
+    </select>
+    <select id="findList" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"/>
+        from t_msjw_system_sysuser
+        <where>
+            <if test="departId != null">
+                depart_id = #{ departId }
+            </if>
+            <if test="username != null">
+                username = #{ username }
+            </if>
+            <if test="fullname != null">
+                fullname = #{ fullname }
+            </if>
+            <if test="password != null">
+                password = #{ password }
+            </if>
+            <if test="mobile != null">
+                mobile = #{ mobile }
+            </if>
+            <if test="email != null">
+                email = #{ email }
+            </if>
+            <if test="status != null">
+                status = #{ status }
+            </if>
+            <if test="createTime != null">
+                create_time = #{ createTime }
+            </if>
+            <if test="sex != null">
+                sex = #{ sex }
+            </if>
+            <if test="isModifypass != null">
+                is_modifypass = #{ isModifypass }
+            </if>
+            <if test="branchId != null">
+                branch_id = #{ branchId }
+            </if>
+            <if test="position != null">
+                position = #{ position }
+            </if>
+            <if test="chineseAccount != null">
+                chinese_account = #{ chineseAccount }
+            </if>
+            <if test="isLawperson != null">
+                is_lawperson = #{ isLawperson }
+            </if>
+            <if test="birthday != null">
+                birthday = #{ birthday }
+            </if>
+            <if test="executorid != null">
+                executorid = #{ executorid }
+            </if>
+            <if test="credential != null">
+                credential = #{ credential }
+            </if>
+            <if test="sdate != null">
+                sdate = #{ sdate }
+            </if>
+            <if test="edate != null">
+                edate = #{ edate }
+            </if>
+            <if test="noEdate != null">
+                no_edate = #{ noEdate }
+            </if>
+            <if test="fixedPhone != null">
+                fixed_phone = #{ fixedPhone }
+            </if>
+            <if test="failCount != null">
+                fail_count = #{ failCount }
+            </if>
+        </where>
+    </select>
+
+    <insert id="saveRecord" parameterType="SysUser">
+        <selectKey keyProperty="userId" resultType="String" order="BEFORE">
+            select sys_guid() from dual
+        </selectKey>
+        insert into t_msjw_system_sysuser
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            user_id,
+            <if test="departId != null">
+                depart_id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="fullname != null">
+                fullname,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="isModifypass != null">
+                is_modifypass,
+            </if>
+            <if test="branchId != null">
+                branch_id,
+            </if>
+            <if test="position != null">
+                position,
+            </if>
+            <if test="chineseAccount != null">
+                chinese_account,
+            </if>
+            <if test="isLawperson != null">
+                is_lawperson,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+            <if test="executorid != null">
+                executorid,
+            </if>
+            <if test="credential != null">
+                credential,
+            </if>
+            <if test="sdate != null">
+                sdate,
+            </if>
+            <if test="edate != null">
+                edate,
+            </if>
+            <if test="noEdate != null">
+                no_edate,
+            </if>
+            <if test="fixedPhone != null">
+                fixed_phone,
+            </if>
+            <if test="failCount != null">
+                fail_count,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ userId,jdbcType=VARCHAR },
+            <if test="departId != null">
+                #{ departId,jdbcType=VARCHAR },
+            </if>
+            <if test="username != null">
+                #{ username,jdbcType=VARCHAR },
+            </if>
+            <if test="fullname != null">
+                #{ fullname,jdbcType=VARCHAR },
+            </if>
+            <if test="password != null">
+                #{ password,jdbcType=VARCHAR },
+            </if>
+            <if test="mobile != null">
+                #{ mobile,jdbcType=VARCHAR },
+            </if>
+            <if test="email != null">
+                #{ email,jdbcType=VARCHAR },
+            </if>
+            <if test="status != null">
+                #{ status,jdbcType=DOUBLE },
+            </if>
+            <if test="createTime != null">
+                #{ createTime,jdbcType=VARCHAR },
+            </if>
+            <if test="sex != null">
+                #{ sex,jdbcType=DOUBLE },
+            </if>
+            <if test="isModifypass != null">
+                #{ isModifypass,jdbcType=VARCHAR },
+            </if>
+            <if test="branchId != null">
+                #{ branchId,jdbcType=VARCHAR },
+            </if>
+            <if test="position != null">
+                #{ position,jdbcType=VARCHAR },
+            </if>
+            <if test="chineseAccount != null">
+                #{ chineseAccount,jdbcType=VARCHAR },
+            </if>
+            <if test="isLawperson != null">
+                #{ isLawperson,jdbcType=VARCHAR },
+            </if>
+            <if test="birthday != null">
+                #{ birthday,jdbcType=VARCHAR },
+            </if>
+            <if test="executorid != null">
+                #{ executorid,jdbcType=VARCHAR },
+            </if>
+            <if test="credential != null">
+                #{ credential,jdbcType=VARCHAR },
+            </if>
+            <if test="sdate != null">
+                #{ sdate,jdbcType=VARCHAR },
+            </if>
+            <if test="edate != null">
+                #{ edate,jdbcType=VARCHAR },
+            </if>
+            <if test="noEdate != null">
+                #{ noEdate,jdbcType=VARCHAR },
+            </if>
+            <if test="fixedPhone != null">
+                #{ fixedPhone,jdbcType=VARCHAR },
+            </if>
+            <if test="failCount != null">
+                #{ failCount,jdbcType=DOUBLE },
+            </if>
+        </trim>
+
+    </insert>
+
+    <update id="modifyRecord" parameterType="SysUser">
+        update t_msjw_system_sysuser
+        <set>
+            <if test="departId != null">
+                depart_id =#{ departId,jdbcType=VARCHAR },
+            </if>
+            <if test="username != null">
+                username =#{ username,jdbcType=VARCHAR },
+            </if>
+            <if test="fullname != null">
+                fullname =#{ fullname,jdbcType=VARCHAR },
+            </if>
+            <if test="password != null">
+                password =#{ password,jdbcType=VARCHAR },
+            </if>
+            <if test="mobile != null">
+                mobile =#{ mobile,jdbcType=VARCHAR },
+            </if>
+            <if test="email != null">
+                email =#{ email,jdbcType=VARCHAR },
+            </if>
+            <if test="status != null">
+                status =#{ status,jdbcType=DOUBLE },
+            </if>
+            <if test="createTime != null">
+                create_time =#{ createTime,jdbcType=VARCHAR },
+            </if>
+            <if test="sex != null">
+                sex =#{ sex,jdbcType=DOUBLE },
+            </if>
+            <if test="isModifypass != null">
+                is_modifypass =#{ isModifypass,jdbcType=VARCHAR },
+            </if>
+            <if test="branchId != null">
+                branch_id =#{ branchId,jdbcType=VARCHAR },
+            </if>
+            <if test="position != null">
+                position =#{ position,jdbcType=VARCHAR },
+            </if>
+            <if test="chineseAccount != null">
+                chinese_account =#{ chineseAccount,jdbcType=VARCHAR },
+            </if>
+            <if test="isLawperson != null">
+                is_lawperson =#{ isLawperson,jdbcType=VARCHAR },
+            </if>
+            <if test="birthday != null">
+                birthday =#{ birthday,jdbcType=VARCHAR },
+            </if>
+            <if test="executorid != null">
+                executorid =#{ executorid,jdbcType=VARCHAR },
+            </if>
+            <if test="credential != null">
+                credential =#{ credential,jdbcType=VARCHAR },
+            </if>
+            <if test="sdate != null">
+                sdate =#{ sdate,jdbcType=VARCHAR },
+            </if>
+            <if test="edate != null">
+                edate =#{ edate,jdbcType=VARCHAR },
+            </if>
+            <if test="noEdate != null">
+                no_edate =#{ noEdate,jdbcType=VARCHAR },
+            </if>
+            <if test="fixedPhone != null">
+                fixed_phone =#{ fixedPhone,jdbcType=VARCHAR },
+            </if>
+            <if test="failCount != null">
+                fail_count =#{ failCount,jdbcType=DOUBLE },
+            </if>
+        </set>
+        where user_id=#{ userId,jdbcType=VARCHAR }
+    </update>
+
+    <!--1. 如果传入的是单参数且参数类型是一个List的时候，collection属性值为list-->
+    <!--2. 如果传入的是单参数且参数类型是一个array数组的时候，collection的属性值为array-->
+    <!--3. 如果传入的参数是多个的时候，我们就需要把它们封装成一个Map了，当然单参数也可-->
+    <delete id="removeRecords">
+        delete from t_msjw_system_sysuser
+        where user_id in
+        <foreach item="item" index="index" collection="array"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>

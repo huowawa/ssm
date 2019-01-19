@@ -8,8 +8,10 @@
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
 %>
 <script type="text/javascript" src="<%=basePath%>/resources/layui-2.4/layui.js"></script>
+<%--
 <script type="text/javascript" src="<%=basePath%>/resources/react15/react.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resources/react15/react-dom.js"></script>
+--%>
 
 
 

@@ -85,7 +85,13 @@
     </bean>
 
     <bean id="log-filter" class="com.alibaba.druid.filter.logging.Log4j2Filter">
-        <property name="dataSourceLogEnabled" value="true"/>
+        <!-- 所有连接相关的日志 -->
+        <property name="connectionLogEnabled" value="false"/>
+        <!-- 所有Statement相关的日志 -->
+        <property name="statementLogEnabled" value="false"/>
+        <!-- 是否显示结果集 -->
+        <property name="resultSetLogEnabled" value="true"/>
+        <!-- 是否显示SQL语句 -->
         <property name="statementExecutableSqlLogEnable" value="true"/>
     </bean>
 
