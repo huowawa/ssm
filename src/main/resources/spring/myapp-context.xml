@@ -10,6 +10,7 @@
     <import resource="spring-dao.xml"/>
     <import resource="spring-service.xml"/>
     <import resource="spring-transaction.xml"/>
+    <import resource="spring-kaptcha.xml" />
 
     <!-- druid监控配置 -->
     <import resource="spring-druid-stat.xml"/>

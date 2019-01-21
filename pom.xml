@@ -41,6 +41,7 @@
     <jsoup.version>1.11.3</jsoup.version>
     <thymeleaf.version>3.0.11.RELEASE</thymeleaf.version>
       <thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
+    <kaptcha.version>2.3.2</kaptcha.version>
   </properties>
 
   <dependencies>
@@ -234,6 +235,12 @@
           <artifactId>thymeleaf-spring4</artifactId>
           <version>${thymeleaf.version}</version>
       </dependency>
+
+    <dependency>
+      <groupId>com.google.code</groupId>
+      <artifactId>kaptcha</artifactId>
+      <version>${kaptcha.version}</version>
+    </dependency>
 
   </dependencies>
 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
@@ -41,13 +42,14 @@ public class SysUserController {
     /**
      * 引入Service
      */
-    //@Resource
+    @Resource
     private SysUserService sysUserService;
 
     @RequestMapping("/getUser")
     @ResponseBody
     public SysUser getRecord(HttpServletRequest request) {
-        sysUserService = (SysUserService) SpringContextUtil.getBean("sysUserService");
+        String projectpath = SpringContextUtil.getEnvironmentProperty("projectpath");
+
         SysUser param = new SysUser();
         param.setUsername("lysh_lxh");
         //SysUser sysuser = sysUserService.getById("402883524863ab1f014863ab1f340000");
